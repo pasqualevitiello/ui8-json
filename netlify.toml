@@ -1,0 +1,9 @@
+[build]
+command = "npm run build"
+publish = "build"
+
+[build.environment]
+NODE_VERSION = "14"
+
+[build.lifecycle]
+onBuild = "npm install && npm run fetch-json"
