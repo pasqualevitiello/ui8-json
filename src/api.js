@@ -1,13 +1,18 @@
 const express = require("express");
 const serverless = require("serverless-http");
+const axios = require("axios").default;
 
 const app = express();
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.json({
-    hello: "hi!"
-  });
+router.get("/", async (req, res) => {
+  try {
+    const response = await axios.get("https://ui8.net/api/home");
+    res.json(response.data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
 
 app.use(`/.netlify/functions/api`, router);
