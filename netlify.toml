@@ -1,6 +1,5 @@
 [build]
   functions = "functions"
-  NODE_VERSION = "16"
 
 [dev]
   publish = "dist"
